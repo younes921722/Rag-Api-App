@@ -77,3 +77,4 @@ Download the POSTMAN collection from [/assets/mini-rag-dev.postman_collection.js
 curl --location --request POST 'http://localhost:5000/api/v1/upload/1' \
 --form 'file=@"/C:/Users/Home/Desktop/wiki.txt"'
 ```
+### 2) Process a document

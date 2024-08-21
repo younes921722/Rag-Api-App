@@ -15,5 +15,5 @@ async def welcome(app_settings:Settings =Depends(get_settings)):
     return {
         "app name":app_name,
         "app version":app_version,
-        "message":"hello All!"
+        "message":"hello !"
     }

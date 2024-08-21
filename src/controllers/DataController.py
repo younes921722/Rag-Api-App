@@ -26,16 +26,17 @@ class DataController(BaseController):
         project_path = ProjectController().get_project_path(project_id=project_id)
 
         clean_file_name = self.get_clean_file_name(orig_file_name=orig_file_name)
+        file_id = random_name+ "_" + clean_file_name
 
         new_file_path = os.path.join(project_path,
-                                     random_name+ "_" + clean_file_name)
+                                     file_id)
         
         while os.path.exists(new_file_path):
             random_name = self.generate_random_string
             new_file_path = os.path.join(project_path,
                                      random_name+ "_" + clean_file_name)
     
-        return new_file_path
+        return new_file_path, file_id
     
     def get_clean_file_name(self, orig_file_name: str):
 

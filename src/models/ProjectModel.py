@@ -1,6 +1,7 @@
 from .BaseDataModel import BaseDataModel
 from .db_schemes import Project
 from .enums.DataBaseEnum import DataBaseEnum
+from bson.objectid import ObjectId
 
 class ProjectModel(BaseDataModel):
 
@@ -20,15 +21,17 @@ class ProjectModel(BaseDataModel):
         record = await self.collection.find_one({
             "project_id":project_id
         })
-
+        print("******************* 1",record)
         if record is None:
             # create new project
             project = Project(project_id = project_id)
             project = await self.create_project(project=project)
+            print("*****************0",project._id)
 
             return project
         
-        return Project(**record) # convert the dictionary to Project model
+        print("********************4",Project(**record).id)
+        return Project(**record) # convert the dictionary to Project model <====> Project(_id=record["id"], project_id=record["project_id"])
     
     async def get_all_projects(self, page: int=1, page_size: int=10):
 

@@ -1,9 +1,10 @@
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel , Field
 from bson import ObjectId
 from typing import Optional
 
 class DataChunk(BaseModel):
-    _id: Optional[ObjectId]
+    
+    id: Optional[ObjectId] = Field(None, alias="_id")
     chunk_text: str = Field(..., min_length=1)
     chunk_metadata: dict
     chunk_order : int = Field(..., gt=0)

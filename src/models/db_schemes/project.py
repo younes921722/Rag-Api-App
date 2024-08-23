@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 
 class Project(BaseModel):
 
-    id: Optional[ObjectId] = Field(default_factory=ObjectId, alias='_id')
+    id: Optional[ObjectId] = Field(None, alias='_id')
     project_id: str = Field(..., min_length=1)
 
     @field_validator("project_id")
@@ -15,3 +15,17 @@ class Project(BaseModel):
     
     class Config:
         arbitrary_types_allowed = True
+
+    # static method
+    @classmethod
+    def get_indexes(cls):
+
+        return [
+            {
+                "key":[
+                    ("project_id", 1)
+                ],
+                "name":"project_id_idex_1",
+                "unique": True
+            }
+        ]

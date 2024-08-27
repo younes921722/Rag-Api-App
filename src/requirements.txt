@@ -9,12 +9,5 @@ PyMuPDF==1.24.9
 motor==3.4.0
 openai==1.42.0
 cohere==5.8.1
-langchain_openai==0.0.8
-pypdf==4.0.2
-pymongo==4.6.2
-sentence-transformers==2.2.2
-chromadb==0.4.24
-marqo==3.1.0
-lancedb==0.6.3
-tantivy==0.21.0
-pandas==2.0.0
+qdrant-client==1.11.0
+google-generativeai == 0.7.2

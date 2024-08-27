@@ -25,7 +25,7 @@ class Asset(BaseModel):
                 "key":[
                     ("asset_project_id", 1)
                 ],
-                "name":"asset_project_id_idex_1",
+                "name":"asset_project_id_index_1",
                 "unique": False
             },
             {
@@ -33,7 +33,7 @@ class Asset(BaseModel):
                     ("asset_project_id", 1),
                     ("asset_name", 1)
                 ],
-                "name":"asset_project_id_name_idex_1",
+                "name":"asset_project_id_name_index_1",
                 "unique": True
             }
         ]

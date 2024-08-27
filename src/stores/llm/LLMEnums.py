@@ -3,6 +3,7 @@ from enum import Enum
 class LLMEnums(Enum):
     
     OPENAI = "OPENAI"
+    GEMINI = "GEMINI"
     COHERE = "COHERE"
     GROQ = "GROQ"
     OLLAMA = "OLLAMA"
@@ -20,6 +21,9 @@ class CohereEnums(Enum):
     DOCUMENT="search_document"
     QUERY="search_query"
 
+class GeminiEnums(Enum):
+    DOCUMENT="retrieval_document"
+    QUERY="retrieval_query"
 
 class DocumentTypeEnum(Enum):
 

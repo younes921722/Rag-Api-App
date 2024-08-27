@@ -163,7 +163,6 @@ async def process_endpoint(request: Request, project_id:str, process_request: Pr
             continue
 
         file_chunks = process_controller.process_file_content(file_content=file_content,
-                                                            file_id=file_id,
                                                             chunk_size=chunk_size,
                                                             overlap_size=overlap_size)
         if file_chunks is None or len(file_chunks)==0:

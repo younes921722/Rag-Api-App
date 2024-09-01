@@ -62,6 +62,7 @@ async def index_project(request: Request, project_id:str, push_request:PushReque
             break
 
         chunk_ids = list(range(idx, idx + len(page_chunks)))
+        idx += len(page_chunks)
 
         is_inserted = nlp_controller.index_into_vector_db(
             project= project,

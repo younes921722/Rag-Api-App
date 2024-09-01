@@ -28,7 +28,7 @@ class ProjectModel(BaseDataModel):
                     unique= index["unique"]
                 )
 
-    async def create_project(self, project: Project):
+    async def create_project(self, project: Project): # we could say insert porject instead of creat.
 
         result = await self.collection.insert_one(project.model_dump(by_alias=True, exclude_unset=True))
         project.id = result.inserted_id

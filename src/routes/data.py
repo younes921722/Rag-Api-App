@@ -42,11 +42,11 @@ async def upload_data(request:Request, project_id: str, file: UploadFile,
                 "signal": result_signal
             }
         )
-    
+    # get the directory path of the project 
     project_dir_path = ProjectController().get_project_path(project_id=project_id)
     file_path, file_id = data_controller.generate_unique_filename(
-        orig_file_name=file.filename,
-        project_id=project_dir_path
+        orig_file_name= file.filename,
+        project_id = project_dir_path
     )
     
     try:
@@ -78,6 +78,7 @@ async def upload_data(request:Request, project_id: str, file: UploadFile,
     return JSONResponse(
             content={
                 "signal": ResponseSignal.FILE_UPLOAD_SUCCESS.value,
+                "file_name":asset_record.asset_name,
                 "file_id": str(asset_record.id),
                 "project_id": str(project.id)
             }
@@ -88,8 +89,8 @@ async def upload_data(request:Request, project_id: str, file: UploadFile,
 async def process_endpoint(request: Request, project_id:str, process_request: ProcessRequest):
 
     # file_id = process_request.file_id
-    chunk_size=process_request.chunk_size
-    overlap_size= process_request.overlap_size
+    chunk_size = process_request.chunk_size
+    overlap_size = process_request.overlap_size
     do_reset = process_request.do_reset
 
     project_model = await ProjectModel.create_instance(
@@ -123,7 +124,7 @@ async def process_endpoint(request: Request, project_id:str, process_request: Pr
         project_files_ids = {
             asset_record.id : asset_record.asset_name
         }
-    
+
     else:
         project_file = await asset_model.get_all_project_assets(asset_project_id = project.id
                                                                ,asset_type= AssetTypeEnum.FILE.value)

@@ -18,6 +18,12 @@ $ conda create -n mini-rag python=3.8
 $ conda activate mini-rag
 ```
 
+### (Optional) Setup you command line interface for better readability
+
+```bash
+export PS1="\[\033[01;32m\]\u@\h:\w\n\[\033[00m\]\$ "
+```
+
 ## Installation
 
 ### Install the required packages
@@ -34,26 +40,21 @@ $ cp .env.example .env
 
 Set your environment variables in the `.env` file. Like `OPENAI_API_KEY` value.
 
-<!-- ### Install Ollama (Optional)
-
-1) Install Ollama from [here](https://github.com/ollama/ollama/tree/main#ollama)
-2) Pull one of the models from [here](https://github.com/ollama/ollama/tree/main#model-library)
+## Run Docker Compose Services
 
 ```bash
-$ ollama pull dolphin-phi
+$ cd docker
+$ cp .env.example .env
 ```
 
-3) (**Optional**) set the `OLLAMA_HOST` in your operating system to be `0.0.0.0`
-4) Run the Ollama server 
+- update `.env` with your credentials
+
+
 
 ```bash
-
-$ ollama serve
-
-``` -->
-
-5) (**Optional**) Explore the APIs [Docs](https://github.com/ollama/ollama/blob/main/docs/api.md)
-
+$ cd docker
+$ sudo docker compose up -d
+```
 
 ## Run the FastAPI server
 
@@ -63,18 +64,4 @@ $ uvicorn main:app --reload --host 0.0.0.0 --port 5000
 
 ## POSTMAN Collection
 
-Download the POSTMAN collection from [/assets/mini-rag-dev.postman_collection.json](/assets/mini-rag-dev.postman_collection.json)
-
-## API Docs
-
-- Swagger UI: http://localhost:5000/docs
-
-## APIs
-
-### 1) Upload a document
-
-```bash
-curl --location --request POST 'http://localhost:5000/api/v1/upload/1' \
---form 'file=@"/C:/Users/Home/Desktop/wiki.txt"'
-```
-### 2) Process a document
+Download the POSTMAN collection from [/assets/mini-rag-app.postman_collection.json](/assets/mini-rag-app.postman_collection.json)

@@ -25,6 +25,7 @@ class CohereProvider(LLMInterface):
 
         self.client = cohere.Client(api_key=api_key)
 
+        self.enums  = CohereEnums
         self.logger = logging.getLogger(__name__)
 
     def set_generation_model(self, model_id: str):
@@ -63,7 +64,7 @@ class CohereProvider(LLMInterface):
             self.logger.error("Error while generating text with Cohere")
             return None 
         
-        chat_history.append(self.constract_prompt(
+        chat_history.append(self.construct_prompt(
             role=CohereEnums.ASSISTANT.value,
             prompt=prompt
         ))
@@ -100,7 +101,7 @@ class CohereProvider(LLMInterface):
     
 
 
-    def constract_prompt(self, prompt:str, role:str):
+    def construct_prompt(self, prompt:str, role:str):
         return {
             "role":role,
             "text": self.process_text(prompt)
